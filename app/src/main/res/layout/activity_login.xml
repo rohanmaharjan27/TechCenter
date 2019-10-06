@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.LoginActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/_20sdp">
+
+    <ImageView
+        android:id="@+id/la_ivLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_launcher_foreground"/>
+
+    <TextView
+        android:id="@+id/la_tvWelcomeTitle"
+        android:layout_below="@id/la_ivLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome to TechCenter,"
+        android:textColor="#000"
+        android:fontFamily="@font/open_sans_semibold"
+        android:textSize="@dimen/_16sdp"
+        />
+
+    <TextView
+        android:id="@+id/la_tvWelcomeSubtitle"
+        android:layout_below="@id/la_tvWelcomeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please login to continue"
+        android:textColor="#000"
+        android:fontFamily="@font/open_sans_light"
+        android:textSize="@dimen/_16sdp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/la_tvWelcomeSubtitle"
+        android:orientation="vertical"
+        android:gravity="center|bottom"
+        >
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/la_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:errorEnabled="true"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Email"
+            android:fontFamily="@font/open_sans"
+            android:inputType="textEmailAddress"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/la_password"
+        android:layout_below="@id/la_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:errorEnabled="true"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Password"
+            android:fontFamily="@font/open_sans"
+            android:inputType="textPassword"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/la_btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/la_password"
+            android:background="@drawable/bg_btn"
+            android:fontFamily="@font/open_sans_bold"
+            android:text="Login"
+            android:textAllCaps="false"
+            android:textColor="#FFF"
+            android:textSize="@dimen/_13sdp"
+
+            />
+
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_14sdp"
+        android:layout_marginBottom="@dimen/_28sdp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_below="@+id/la_btnLogin">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/open_sans_light"
+        android:text="New User?"
+        android:textColor="#363636"
+        android:textSize="@dimen/_11sdp"/>
+
+        <TextView
+            android:id="@+id/la_tvSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/_4sdp"
+            android:fontFamily="@font/open_sans_bold"
+            android:text="Sign Up"
+            android:textColor="#3d5afe"
+            android:textSize="@dimen/_11sdp" />
+    </LinearLayout>
+
+    </LinearLayout>
+
+    </RelativeLayout>
+
+</ScrollView>
