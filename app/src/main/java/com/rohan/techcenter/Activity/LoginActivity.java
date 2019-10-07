@@ -3,35 +3,38 @@ package com.rohan.techcenter.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.StrictMode;
+import android.os.Vibrator;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.rohan.techcenter.BL.LoginBL;
 import com.rohan.techcenter.R;
 
 import java.util.regex.Pattern;
 
 import es.dmoral.toasty.Toasty;
 
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
+
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
-    private TextInputLayout loginEmail;
-    private TextInputLayout loginPassword;
+    private EditText loginEmail,loginPassword;
     private Button btnLogin;
     private TextView la_tvSignUp;
 
-    private static final Pattern PASSWORD_PATTERN=
-            Pattern.compile("^" +
-                    //"(?=.*[0-9])" +         //at least 1 digit
-                    //"(?=.*[a-z])" +         //at least 1 lower case letter
-                    //"(?=.*[A-Z])" +         //at least 1 upper case letter
-                    "(?=.*[a-zA-Z])" +      //any letter
-                    "(?=.*[@#$%^&+=])" +    //at least 1 special character
-                    "(?=\\S+$)" +           //no white spaces
-                    ".{7,}" +               //at least 7 characters
-                    "$");
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
+
+    Vibrator vibrator;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
 
         getSupportActionBar().hide();
+
+        preferences = getSharedPreferences("loginPreference",MODE_PRIVATE);
+        editor = preferences.edit();
 
         loginEmail=findViewById(R.id.la_email);
         loginPassword=findViewById(R.id.la_password);
@@ -53,14 +59,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private boolean validateEmail(){
-        String emailInput=loginEmail.getEditText().getText().toString().trim();
+        String emailInput=loginEmail.getText().toString().trim();
 
         if (emailInput.isEmpty()){
             loginEmail.setError("Please enter your email");
             return false;
         }
-        else if (Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()){
-            loginEmail.setError("Please enter a valid email address");
+        else if (!Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()){
+            loginEmail.setError("Please enter a valid email address!");
             return false;
         }
         else {
@@ -70,14 +76,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private boolean validatePassword(){
-        String passwordInput=loginPassword.getEditText().getText().toString().trim();
+        String passwordInput=loginPassword.getText().toString().trim();
 
         if (passwordInput.isEmpty()){
-            loginPassword.setError("Please enter your password");
-            return false;
-        }
-        else if (!PASSWORD_PATTERN.matcher(passwordInput).matches()){
-            loginPassword.setError("Password too weak");
+            loginPassword.setError("Please enter your password!");
             return false;
         }
         else {
@@ -86,14 +88,48 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
+    private void StrictMode(){
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+    }
+
     public void onClick(View view) {
         switch (view.getId()) {
 
             case R.id.la_btnLogin:
                 if (validateEmail() && validatePassword()){
-                    Toasty.success(LoginActivity.this,"Login Success!",Toasty.LENGTH_LONG).show();
-                }
-                break;
+                        final LoginBL loginBL=new LoginBL(loginEmail.getText().toString(),loginPassword.getText().toString());
+                        StrictMode();
+
+                        if(loginBL.checkUser().equals("Invalid")){
+                            Toasty.warning(LoginActivity.this,"Invalid credentials", Toast.LENGTH_SHORT).show();
+                            vibrator=(Vibrator) getSystemService(VIBRATOR_SERVICE);
+                            vibrator.vibrate(200);
+                        } else if (loginBL.checkUser().equals("error")){
+                            Toasty.error(LoginActivity.this,"Error during login",Toast.LENGTH_SHORT).show();
+                            vibrator=(Vibrator) getSystemService(VIBRATOR_SERVICE);
+                            vibrator.vibrate(200);
+                        }
+                        else {
+                            Toasty.success(LoginActivity.this,"Success",Toast.LENGTH_SHORT).show();
+                            final Intent intent=new Intent(LoginActivity.this, MainActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | FLAG_ACTIVITY_NEW_TASK);
+                            editor.putString("email",loginEmail.getText().toString())
+                                    .putBoolean("loginStatus",true)
+                                    .putString("token",loginBL.checkUser())
+                                    .apply();
+
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    startActivity(intent);
+                                    finish();
+                                }
+                            }, 2000);
+
+                        }
+                    }
+                    break;
 
             case R.id.la_tvSignUp:
                 Intent intent=new Intent(LoginActivity.this,RegisterActivity.class);
