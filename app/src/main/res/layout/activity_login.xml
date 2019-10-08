@@ -80,7 +80,6 @@
             android:textAllCaps="false"
             android:textColor="#FFF"
             android:textSize="@dimen/_13sdp"
-
             />
 
         <LinearLayout

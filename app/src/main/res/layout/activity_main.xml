@@ -6,13 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".Activity.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/fragment_container"
+            >
+
+        </FrameLayout>
+    </ScrollView>
+    <com.tbuonomo.morphbottomnavigation.MorphBottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:menu="@menu/main_menu"
+        android:backgroundTint="#3d5afe"
+        app:itemIconTint="#FFFFFF"
+        app:itemTextColor="#ffffff"
+        app:morphCornerRadius="@dimen/_120sdp"
+        app:morphItemRadius="@dimen/_45sdp"
+        app:morphVerticalOffset="@dimen/_7sdp"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
