@@ -3,6 +3,7 @@ package com.rohan.techcenter.BL;
 import com.rohan.techcenter.Interface.TCAPI;
 import com.rohan.techcenter.Model.Product;
 import com.rohan.techcenter.Model.Rating;
+import com.rohan.techcenter.Model.TotalRatingModel;
 import com.rohan.techcenter.URL.URL;
 
 import java.io.IOException;
@@ -34,6 +35,30 @@ public class ProductBL {
             e.printStackTrace();
         }
         return productList1;
+    }
+
+    public String getTotalRating(String productName){
+        tcAPI= URL.getInstance().create(TCAPI.class);
+        Call<TotalRatingModel> productList=tcAPI.getTotalRating(productName);
+
+        try {
+            Response<TotalRatingModel> productResponse = productList.execute();
+            if (productResponse.isSuccessful()) {
+                ratingList = productResponse.body().getRatings();
+                int count = productResponse.body().getCount();
+                float total = 0.0f;
+                for (Rating rating:ratingList) {
+                    total += Float.parseFloat(rating.getRating());
+                }
+                float rating = total/count;
+                return ""+rating;
+            }
+
+        }catch (IOException e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return "0.0";
     }
 
 }
