@@ -87,9 +87,11 @@ public class ProductFragment extends Fragment {
 
         if(productBL.getProduct() != null){
             productList = productBL.getProduct();
+            System.out.print(productList);
         }
         else {
-            Toasty.error(getActivity(),"Error while displaying products",Toast.LENGTH_LONG).show();
+
+            Toasty.error(getActivity(),"Error while displaying products",Toasty.LENGTH_LONG).show();
         }
     }
 

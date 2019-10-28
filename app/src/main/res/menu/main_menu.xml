@@ -6,14 +6,14 @@
         android:id="@+id/action_product"
         android:enabled="true"
         android:icon="@drawable/ic_devices_white"
-        android:title="Books"
+        android:title="Products"
         app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/action_gaming"
         android:enabled="true"
         android:icon="@drawable/ic_videogame_asset_white"
-        android:title="Food"
+        android:title="Gaming"
         app:showAsAction="ifRoom"/>
 
     <item

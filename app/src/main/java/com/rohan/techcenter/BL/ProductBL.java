@@ -31,7 +31,6 @@ public class ProductBL {
             }
 
         }catch (IOException e){
-            System.out.println(e.getMessage());
             e.printStackTrace();
         }
         return productList1;

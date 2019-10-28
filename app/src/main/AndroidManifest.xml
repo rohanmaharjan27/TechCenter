@@ -12,8 +12,8 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".Activity.ProductDetailsActivity"></activity>
         <activity android:name=".Activity.RegisterActivity" />
-        <activity android:name=".Activity.MainActivity" />
-        <activity android:name=".Activity.LoginActivity">
+        <activity android:name=".Activity.LoginActivity"/>
+            <activity android:name=".Activity.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

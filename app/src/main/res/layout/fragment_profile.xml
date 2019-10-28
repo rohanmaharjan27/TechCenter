@@ -1,14 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Fragment.ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="@dimen/_200sdp"
+        android:background="@drawable/profilebg">
 
-</FrameLayout>
+<de.hdodenhof.circleimageview.CircleImageView
+    android:layout_width="@dimen/_100sdp"
+    android:layout_height="@dimen/_100sdp"
+    android:layout_marginTop="@dimen/_70sdp"
+    android:src="@drawable/ic_launcher_foreground"
+    android:layout_centerHorizontal="true"
+    android:id="@+id/user_img"
+    />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_7sdp"
+            android:textSize="@dimen/_15sdp"
+            android:text="Name Here"
+            android:textColor="#000"
+            android:fontFamily="@font/open_sans_semibold"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/profile_name"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="50"
+            android:textColor="#000"
+            android:fontFamily="@font/open_sans_bold"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginLeft="@dimen/_100sdp"
+            android:id="@+id/tv_purchases"
+            android:layout_below="@id/profile_name"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_55sdp"
+            android:text="Wishlisted"
+            android:textColor="#000"
+            android:fontFamily="@font/open_sans"
+            android:layout_below="@+id/tv_wishlisted"
+            android:layout_toRightOf="@id/purchases_title"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10"
+            android:textColor="#000"
+            android:fontFamily="@font/open_sans_bold"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginLeft="@dimen/_100sdp"
+            android:id="@+id/tv_wishlisted"
+            android:layout_below="@id/profile_name"
+            android:layout_toRightOf="@id/tv_purchases"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_85sdp"
+            android:text="Purchases"
+            android:textColor="#000"
+            android:fontFamily="@font/open_sans"
+            android:layout_below="@+id/tv_purchases"
+            android:id="@+id/purchases_title"/>
+    </RelativeLayout>
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:layout_marginLeft="@dimen/_75sdp"
+        android:text="Wishlist"
+        android:fontFamily="@font/open_sans"
+        android:textColor="#FFF"
+        android:textAllCaps="false"
+        android:background="@drawable/bg_btn"
+        android:id="@+id/btn_wishlist"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:layout_marginLeft="@dimen/_45sdp"
+        android:text="History"
+        android:fontFamily="@font/open_sans"
+        android:textColor="#FFF"
+        android:textAllCaps="false"
+        android:background="@drawable/bg_btn"
+        android:id="@+id/btn_viewHistory"/>
+
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_25sdp"
+            android:layout_marginLeft="@dimen/_75sdp"
+            android:text="Edit Profile"
+            android:fontFamily="@font/open_sans"
+            android:textColor="#FFF"
+            android:textAllCaps="false"
+            android:background="@drawable/bg_btn"
+            android:id="@+id/btn_editProfile"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_25sdp"
+            android:layout_marginLeft="@dimen/_45sdp"
+            android:text="About Us"
+            android:fontFamily="@font/open_sans"
+            android:textColor="#FFF"
+            android:textAllCaps="false"
+            android:background="@drawable/bg_btn"
+            android:id="@+id/btn_aboutUs"/>
+
+    </LinearLayout>
+</LinearLayout>

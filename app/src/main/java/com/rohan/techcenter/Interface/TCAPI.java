@@ -24,7 +24,7 @@ public interface TCAPI {
     @POST ("users/login")
     Call<AuthUser> getUser(@Body User user);
 
-    @GET("products/product")
+    @GET("products/products")
     Call<List<Product>> getProduct();
 
     @POST("ratings")
