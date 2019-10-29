@@ -17,9 +17,9 @@
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/action_dashboard"
+        android:id="@+id/action_home"
         android:enabled="true"
-        android:icon="@drawable/ic_dashboard_white"
+        android:icon="@drawable/ic_home"
         android:title="Home"
         app:showAsAction="ifRoom"/>
 

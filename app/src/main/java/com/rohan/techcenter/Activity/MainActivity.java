@@ -9,7 +9,7 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.rohan.techcenter.Fragment.CartFragment;
-import com.rohan.techcenter.Fragment.DashboardFragment;
+import com.rohan.techcenter.Fragment.HomeFragment;
 import com.rohan.techcenter.Fragment.GamingFragment;
 import com.rohan.techcenter.Fragment.ProductFragment;
 import com.rohan.techcenter.Fragment.ProfileFragment;
@@ -26,9 +26,9 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNav=findViewById(R.id.bottomNavigationView);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
-        bottomNav.setSelectedItemId(R.id.action_dashboard);
+        bottomNav.setSelectedItemId(R.id.action_home);
         getSupportFragmentManager().beginTransaction().
-                replace(R.id.fragment_container,new DashboardFragment(),"Dashboard").commit();
+                replace(R.id.fragment_container,new HomeFragment(),"Dashboard").commit();
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener=
@@ -46,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
                             selectedFragment=new GamingFragment();
                             break;
 
-                        case R.id.action_dashboard:
-                            selectedFragment=new DashboardFragment();
+                        case R.id.action_home:
+                            selectedFragment=new HomeFragment();
                             break;
 
                         case R.id.action_cart:

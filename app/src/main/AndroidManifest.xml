@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.rohan.techcenter">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,10 +14,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activity.ProductDetailsActivity"></activity>
+        <activity android:name=".Activity.SplashScreen"></activity>
+        <activity android:name=".Activity.PurchaseHistoryActivity" />
+        <activity android:name=".Activity.AboutUsActivity" />
+        <activity android:name=".Activity.WishlistActivity" />
+        <activity android:name=".Activity.ProfileUpdateActivity" />
+        <activity android:name=".Activity.ProductDetailsActivity" />
         <activity android:name=".Activity.RegisterActivity" />
-        <activity android:name=".Activity.LoginActivity"/>
-            <activity android:name=".Activity.MainActivity" >
+        <activity android:name=".Activity.LoginActivity" />
+        <activity android:name=".Activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,9 +34,5 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
-    <uses-permission android:name="android.permission.VIBRATE" />
 
 </manifest>

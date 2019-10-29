@@ -15,11 +15,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.textfield.TextInputLayout;
 import com.rohan.techcenter.BL.LoginBL;
 import com.rohan.techcenter.R;
-
-import java.util.regex.Pattern;
 
 import es.dmoral.toasty.Toasty;
 
@@ -42,6 +39,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
 
         getSupportActionBar().hide();
+
+        if (preferences.getBoolean("loginStatus",false)){
+            startActivity(new Intent(this,MainActivity.class));
+            finish();
+        }
 
         preferences = getSharedPreferences("loginPreference",MODE_PRIVATE);
         editor = preferences.edit();
