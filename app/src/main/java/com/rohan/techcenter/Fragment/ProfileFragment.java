@@ -13,10 +13,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.rohan.techcenter.Activity.AboutUsActivity;
+import com.rohan.techcenter.Activity.OrderHistoryActivity;
 import com.rohan.techcenter.Activity.ProfileUpdateActivity;
-import com.rohan.techcenter.Activity.PurchaseHistoryActivity;
 import com.rohan.techcenter.Activity.WishlistActivity;
-import com.rohan.techcenter.Model.Product;
 import com.rohan.techcenter.R;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -63,7 +62,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
                 break;
 
             case R.id.btn_viewHistory:
-                Intent intent2=new Intent(getContext(), PurchaseHistoryActivity.class);
+                Intent intent2=new Intent(getContext(), OrderHistoryActivity.class);
                 startActivity(intent2);
                 break;
 

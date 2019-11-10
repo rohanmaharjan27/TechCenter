@@ -1,6 +1,9 @@
 package com.rohan.techcenter.Interface;
 
 import com.rohan.techcenter.Model.AuthUser;
+import com.rohan.techcenter.Model.Cart;
+import com.rohan.techcenter.Model.CartMessageModel;
+import com.rohan.techcenter.Model.OrderHistory;
 import com.rohan.techcenter.Model.Product;
 import com.rohan.techcenter.Model.Rating;
 import com.rohan.techcenter.Model.Register;
@@ -11,6 +14,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
@@ -38,5 +42,20 @@ public interface TCAPI {
 
     @GET("ratings/totalrating/{product_name}")
     Call<TotalRatingModel> getTotalRating(@Path("product_name") String productName);
+
+    @POST("carts")
+    Call<CartMessageModel> addToCart(@Body Cart cart);
+
+    @GET("carts/{email}")
+    Call<List<Cart>> getCart(@Path("email") String email);
+
+    @DELETE("carts/removefromcart/{id}")
+    Call<Void> deleteCartRow(@Path("id") String id);
+
+    @POST("orders")
+    Call<CartMessageModel> addOrder(@Body Cart cart);
+
+    @GET("orders/{email}")
+    Call<List<OrderHistory>> getOrderHistory(@Path("email") String email);
 
 }

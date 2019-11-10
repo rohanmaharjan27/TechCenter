@@ -40,13 +40,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         getSupportActionBar().hide();
 
+        preferences = getSharedPreferences("loginPreference",MODE_PRIVATE);
+        editor = preferences.edit();
+
         if (preferences.getBoolean("loginStatus",false)){
             startActivity(new Intent(this,MainActivity.class));
             finish();
         }
-
-        preferences = getSharedPreferences("loginPreference",MODE_PRIVATE);
-        editor = preferences.edit();
 
         loginEmail=findViewById(R.id.la_email);
         loginPassword=findViewById(R.id.la_password);

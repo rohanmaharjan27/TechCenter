@@ -14,15 +14,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activity.SplashScreen"></activity>
-        <activity android:name=".Activity.PurchaseHistoryActivity" />
+        <activity android:name=".Activity.OrderHistoryActivity"></activity>
+        <activity android:name=".Activity.SplashScreen" />
         <activity android:name=".Activity.AboutUsActivity" />
         <activity android:name=".Activity.WishlistActivity" />
         <activity android:name=".Activity.ProfileUpdateActivity" />
         <activity android:name=".Activity.ProductDetailsActivity" />
+        <activity android:name=".Activity.MainActivity" />
         <activity android:name=".Activity.RegisterActivity" />
-        <activity android:name=".Activity.LoginActivity" />
-        <activity android:name=".Activity.MainActivity">
+        <activity android:name=".Activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

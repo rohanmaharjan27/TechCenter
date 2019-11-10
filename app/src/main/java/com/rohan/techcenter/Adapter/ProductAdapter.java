@@ -50,7 +50,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         holder.tv_totalRating.setText(productBL.getTotalRating(product.getProduct_name()));
 
         String url= URL.BASE_URL+product.getProduct_imagename();
-        Picasso.get().load(url).into(holder.img_product);
+        Picasso.with(context).load(url).into(holder.img_product);
 
         holder.cv_product.setOnClickListener(new View.OnClickListener() {
             @Override
