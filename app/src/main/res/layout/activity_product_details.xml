@@ -23,42 +23,22 @@
                 />
 
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_150sdp"
-                    android:layout_below="@+id/pda_img"
-                    android:layout_marginLeft="@dimen/_20sdp"
-                    android:layout_marginRight="@dimen/_20sdp"
-                    android:elevation="@dimen/_10sdp"
-                    app:cardCornerRadius="@dimen/_10sdp"
-                    app:cardElevation="@dimen/_10sdp">
-
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="@dimen/_minus30sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/pda_img"
                         android:elevation="@dimen/_10sdp">
 
-                        <com.google.android.material.floatingactionbutton.FloatingActionButton
-                            android:id="@+id/pda_btnCart"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_toLeftOf="@+id/pda_btnWishlist"
-                            android:src="@drawable/ic_shopping_cart_white" />
 
-                        <com.google.android.material.floatingactionbutton.FloatingActionButton
-                            android:id="@+id/pda_btnWishlist"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:src="@drawable/ic_shopping_cart_white"/>
 
                         <TextView
                             android:id="@+id/pda_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
                             android:fontFamily="@font/open_sans_semibold"
                             android:text="Gaming PC"
+                            android:textColor="#000"
                             android:textSize="@dimen/_16sdp" />
 
                         <TextView
@@ -66,18 +46,33 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/pda_name"
+                            android:layout_centerHorizontal="true"
                             android:drawableLeft="@drawable/ic_dollar"
                             android:fontFamily="@font/open_sans_semibold"
                             android:text="600"
+                            android:textColor="#000"
+                            android:textSize="@dimen/_15sdp" />
+
+                        <TextView
+                            android:id="@+id/pda_category"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_below="@+id/pda_price"
+                            android:fontFamily="@font/open_sans_semibold"
+                            android:text="PC"
+                            android:textColor="#000"
                             android:textSize="@dimen/_15sdp" />
 
                         <TextView
                             android:id="@+id/pda_manufacturer"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/pda_price"
-                            android:fontFamily="@font/open_sans"
+                            android:layout_centerHorizontal="true"
+                            android:layout_below="@+id/pda_category"
+                            android:fontFamily="@font/open_sans_semibold"
                             android:text="ASUS"
+                            android:textColor="#000"
                             android:textSize="@dimen/_15sdp" />
 
                         <TextView
@@ -85,13 +80,24 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/pda_manufacturer"
-                            android:layout_alignParentLeft="true"
+                            android:layout_centerHorizontal="true"
                             android:fontFamily="@font/open_sans"
                             android:text="0.0"
                             android:drawableLeft="@drawable/ic_star"
                             android:drawablePadding="@dimen/_5sdp"
                             android:textSize="@dimen/_13sdp"
-                            android:textColor="#000000" />
+                            android:textColor="#000" />
+
+                        <TextView
+                            android:id="@+id/pda_desc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/pda_productRating"
+                            android:layout_centerHorizontal="true"
+                            android:fontFamily="@font/open_sans"
+                            android:text="Description Here"
+                            android:textSize="@dimen/_13sdp"
+                            android:textColor="#000" />
 
 
 
@@ -99,28 +105,57 @@
                             android:id="@+id/pda_ratingTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/pda_productRating"
+                            android:layout_below="@+id/pda_desc"
                             android:fontFamily="@font/open_sans"
                             android:text="Rate this product:"
+                            android:layout_centerHorizontal="true"
                             android:layout_marginTop="@dimen/_9sdp"
+                            android:textColor="#000"
                             android:textSize="@dimen/_13sdp" />
 
 
                         <RatingBar
                             android:id="@+id/pda_userRating"
-                            android:scaleX="0.4"
-                            android:scaleY="0.4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/pda_productRating"
-                            android:layout_toRightOf="@id/pda_ratingTitle"
+                            android:layout_below="@id/pda_ratingTitle"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginRight="89dp"
                             android:numStars="5"
                             android:rating="0"
-                            android:layout_alignParentRight="true"/>
+                            android:scaleX="0.4"
+                            android:scaleY="0.4" />
+
+                        <Button
+                            android:layout_width="@dimen/_150sdp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_btn"
+                            android:layout_centerHorizontal="true"
+                            android:layout_below="@id/pda_userRating"
+                            android:layout_marginTop="@dimen/_20sdp"
+                            android:text="Add to Wishlist"
+                            android:textAllCaps="false"
+                            android:fontFamily="@font/open_sans"
+                            android:textColor="#FFF"
+                            android:id="@+id/btn_wishlist"/>
+
+                        <Button
+                            android:layout_width="@dimen/_150sdp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_btn"
+                            android:layout_centerHorizontal="true"
+                            android:layout_below="@id/btn_wishlist"
+                            android:layout_marginTop="@dimen/_20sdp"
+                            android:text="Add to Cart"
+                            android:textAllCaps="false"
+                            android:fontFamily="@font/open_sans"
+                            android:textColor="#FFF"
+                            android:id="@+id/btn_cart"/>
 
                     </RelativeLayout>
 
-                </androidx.cardview.widget.CardView>
 
 
             </RelativeLayout>
