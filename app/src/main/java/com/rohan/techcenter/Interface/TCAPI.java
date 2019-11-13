@@ -28,7 +28,7 @@ public interface TCAPI {
     @POST ("users/login")
     Call<AuthUser> getUser(@Body User user);
 
-    @GET("products/products")
+    @GET("products/")
     Call<List<Product>> getProduct();
 
     @POST("ratings")
@@ -52,7 +52,7 @@ public interface TCAPI {
     @DELETE("carts/removefromcart/{id}")
     Call<Void> deleteCartRow(@Path("id") String id);
 
-    @POST("orders")
+    @POST("orders/multiple")
     Call<CartMessageModel> addOrder(@Body Cart cart);
 
     @GET("orders/{email}")

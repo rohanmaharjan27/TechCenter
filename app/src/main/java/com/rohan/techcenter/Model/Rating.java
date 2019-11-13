@@ -3,7 +3,7 @@ package com.rohan.techcenter.Model;
 public class Rating {
     String email,product_name,_id,rating;
 
-    public Rating(String product_name) {
+    public Rating(String pda_email, String product_name) {
         this.product_name = product_name;
     }
 

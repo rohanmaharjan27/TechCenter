@@ -85,24 +85,24 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
         btn_cart=findViewById(R.id.btn_cart);
         btn_cart.setOnClickListener(this);
 
-//        Rating rating1 = new Rating(pda_email,productName);
-//        if (ratingBL.getMyRating(rating1).size() !=0){
-//            String myRating = ratingBL.getMyRating(rating1).get(0).getRating();
-//            pda_userRating.setRating(Float.parseFloat(myRating));
-//            id = ratingBL.getMyRating(rating1).get(0).get_id();
-//        }
-//        pda_userRating.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-//            @Override
-//            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-//                float myRating=ratingBar.getRating();
-//                Toasty.info(getApplicationContext(),myRating+"/5.0",Toast.LENGTH_SHORT).show();
-//                Rating rating1 = new Rating(pda_email,productName,""+myRating);
-//                if (ratingBL.addRating(rating1)==null) {
-//
-//                    ratingBL.updateRating(id,rating1);
-//                }
-//            }
-//        });
+        Rating rating1 = new Rating(pda_email,productName);
+        if (ratingBL.getMyRating(rating1).size() !=0){
+            String myRating = ratingBL.getMyRating(rating1).get(0).getRating();
+            pda_userRating.setRating(Float.parseFloat(myRating));
+            id = ratingBL.getMyRating(rating1).get(0).get_id();
+        }
+        pda_userRating.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                float myRating=ratingBar.getRating();
+                Toasty.info(getApplicationContext(),myRating+"/5.0",Toast.LENGTH_SHORT).show();
+                Rating rating1 = new Rating(pda_email,productName,""+myRating);
+                if (ratingBL.addRating(rating1)==null) {
+
+                    ratingBL.updateRating(id,rating1);
+                }
+            }
+        });
 
     }
 

@@ -140,7 +140,7 @@ public class CartFragment extends Fragment {
     public void getCart(){
 
         preferences = getContext().getSharedPreferences("loginPreference", Context.MODE_PRIVATE);
-        String cartPhone = preferences.getString("phone", "");
+        String cartPhone = preferences.getString("email", "");
 
         CartBL cartBL=new CartBL();
         StrictMode();

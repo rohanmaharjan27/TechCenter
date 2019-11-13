@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="@dimen/_220sdp"
     android:layout_height="@dimen/_220sdp"
-    android:background="@color/cardview_shadow_start_color"
+    android:background="#3d5afe"
     android:padding="@dimen/_3sdp"
     android:layout_gravity="center"
     android:orientation="vertical">
