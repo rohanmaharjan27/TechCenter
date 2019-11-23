@@ -19,9 +19,13 @@ import android.widget.Toast;
 
 import com.rohan.techcenter.BL.CartBL;
 import com.rohan.techcenter.BL.RatingBL;
+import com.rohan.techcenter.BL.WishlistBL;
 import com.rohan.techcenter.Model.Rating;
 import com.rohan.techcenter.R;
 import com.squareup.picasso.Picasso;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import es.dmoral.toasty.Toasty;
 
@@ -128,7 +132,27 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
     }
 
     private void addtoWishlist(){
+        Bundle bundle = getIntent().getExtras();
+        String pda_imagename = bundle.getString("productImageName2");
+        String pda_productName1= bundle.getString("productName");
+        String pda_productPrice2= bundle.getString("productPrice");
+        String pda_productCategory= bundle.getString("productCategory");
+        String pda_productRating= bundle.getString("productRating");
+        Date date=new Date();
+        SimpleDateFormat formatter=new SimpleDateFormat("MM/dd/yyyy");
+        String strDate=formatter.format(date);
 
+        final WishlistBL wishlistBL=new WishlistBL(pda_email,pda_productName1,pda_productPrice2,pda_productCategory,pda_productRating,strDate,pda_imagename);
+        StrictMode();
+
+        if (wishlistBL.addToWishlist()){
+            Toasty.success(ProductDetailsActivity.this,"Added to Wishlist", Toast.LENGTH_SHORT).show();
+            finish();
+        }
+        else{
+            Toasty.warning(ProductDetailsActivity.this,"Product already in Wishlist",Toast.LENGTH_SHORT).show();
+
+        }
     }
 
     private void addToCart(){

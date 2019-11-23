@@ -1,13 +1,17 @@
 package com.rohan.techcenter.Activity;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.rohan.techcenter.Adapter.OrderHistoryAdapter;
@@ -26,10 +30,17 @@ public class OrderHistoryActivity extends AppCompatActivity {
     public static OrderHistoryAdapter orderHistoryAdapter;
     SharedPreferences preferences;
 
+    ActionBar actionBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_history);
+
+        actionBar=getSupportActionBar();
+        actionBar.setTitle("Purchase History");
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3d5afe")));
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         recyclerView= findViewById(R.id.recyclerViewOrderHistory);
         getOrderHistory();
@@ -56,5 +67,10 @@ public class OrderHistoryActivity extends AppCompatActivity {
         else {
             Toasty.error(this,"Error while displaying order history", Toasty.LENGTH_LONG).show();
         }
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        this.finish();
+        return true;
     }
 }

@@ -55,7 +55,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         holder.et_quantity.setText(cart.getProduct_quantity());
 
         String url= URL.BASE_URL+cart.getProduct_imagename();
-        Picasso.with(context).load(url).into(holder.img_food);
+        Picasso.with(context).load(url).into(holder.img_product);
 
         holder.btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,7 +110,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
                 if (cartBL.deleteFromCart(cart.get_id())) {
                     ((CartFragment) fragment).refreshFragment();
-                    Toast.makeText(context, "Item Removed from Cart", Toast.LENGTH_LONG).show();
+                    Toasty.success(context, "Product Removed from Cart", Toasty.LENGTH_LONG).show();
 
                 }else {
                     return;
@@ -137,7 +137,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     }
 
     public class CartViewHolder extends RecyclerView.ViewHolder{
-        ImageView img_food;
+        ImageView img_product;
         TextView tv_name;
         TextView tv_price;
         EditText et_quantity;
@@ -146,7 +146,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         public CartViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            img_food=itemView.findViewById(R.id.sample_cart_img);
+            img_product=itemView.findViewById(R.id.sample_cart_img);
             tv_name=itemView.findViewById(R.id.sample_cart_name);
             tv_price=itemView.findViewById(R.id.sample_cart_price);
             et_quantity=itemView.findViewById(R.id.sample_cart_quantity);

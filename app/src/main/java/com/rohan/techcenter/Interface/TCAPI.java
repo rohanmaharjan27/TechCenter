@@ -9,6 +9,8 @@ import com.rohan.techcenter.Model.Rating;
 import com.rohan.techcenter.Model.Register;
 import com.rohan.techcenter.Model.TotalRatingModel;
 import com.rohan.techcenter.Model.User;
+import com.rohan.techcenter.Model.Wishlist;
+import com.rohan.techcenter.Model.WishlistMessageModel;
 
 import java.util.List;
 
@@ -57,5 +59,14 @@ public interface TCAPI {
 
     @GET("orders/{email}")
     Call<List<OrderHistory>> getOrderHistory(@Path("email") String email);
+
+    @POST("wishlists")
+    Call<WishlistMessageModel> addToWishlist(@Body Wishlist wishlist);
+
+    @GET("wishlists/{email}")
+    Call<List<Wishlist>> getWishlist(@Path("email") String email);
+
+    @DELETE("wishlists/removefromwishlist/{id}")
+    Call<Void> deleteWishlistRow(@Path("id") String id);
 
 }

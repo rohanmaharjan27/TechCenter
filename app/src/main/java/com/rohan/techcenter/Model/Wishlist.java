@@ -6,7 +6,20 @@ public class Wishlist {
     private String product_name;
     private String product_price;
     private String product_category;
+    private String product_rating;
+    private String date_added;
     private String product_imagename;
+
+    public Wishlist(String _id, String email, String product_name, String product_price, String product_category, String product_rating, String date_added, String product_imagename) {
+        this._id = _id;
+        this.email = email;
+        this.product_name = product_name;
+        this.product_price = product_price;
+        this.product_category = product_category;
+        this.product_rating = product_rating;
+        this.date_added = date_added;
+        this.product_imagename = product_imagename;
+    }
 
     public String get_id() {
         return _id;
@@ -46,6 +59,22 @@ public class Wishlist {
 
     public void setProduct_category(String product_category) {
         this.product_category = product_category;
+    }
+
+    public String getProduct_rating() {
+        return product_rating;
+    }
+
+    public void setProduct_rating(String product_rating) {
+        this.product_rating = product_rating;
+    }
+
+    public String getDate_added() {
+        return date_added;
+    }
+
+    public void setDate_added(String date_added) {
+        this.date_added = date_added;
     }
 
     public String getProduct_imagename() {

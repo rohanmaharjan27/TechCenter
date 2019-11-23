@@ -1,8 +1,8 @@
 package com.rohan.techcenter.BL;
 
 import com.rohan.techcenter.Interface.TCAPI;
-import com.rohan.techcenter.Model.Cart;
-import com.rohan.techcenter.Model.CartMessageModel;
+import com.rohan.techcenter.Model.Wishlist;
+import com.rohan.techcenter.Model.WishlistMessageModel;
 import com.rohan.techcenter.URL.URL;
 
 import java.io.IOException;
@@ -11,37 +11,41 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Response;
 
-public class CartBL {
+public class WishlistBL {
     private String email;
     private String product_name;
     private String product_price;
-    private String product_quantity;
+    private String product_category;
+    private String product_rating;
+    private String date_added;
     private String product_imagename;
     boolean isSuccess=false;
     boolean isDeleted=false;
 
     TCAPI tcAPI;
 
-    public static List<Cart> cartList1;
+    public static List<Wishlist> wishlist1;
 
-    public CartBL(String email, String product_name, String product_price, String product_quantity, String product_imagename) {
+    public WishlistBL(String email, String product_name, String product_price, String product_category, String product_rating, String date_added, String product_imagename) {
         this.email = email;
         this.product_name = product_name;
         this.product_price = product_price;
-        this.product_quantity = product_quantity;
+        this.product_category = product_category;
+        this.product_rating = product_rating;
+        this.date_added = date_added;
         this.product_imagename = product_imagename;
     }
 
-    public CartBL(){}
+    public WishlistBL(){}
 
-    public boolean addToCart(){
+    public boolean addToWishlist(){
         TCAPI tcAPI= URL.getInstance().create(TCAPI.class);
-        Cart cart =new Cart("",email,product_name,product_price,product_quantity,product_imagename,"Cash");
-        Call<CartMessageModel> cartModelCall=tcAPI.addToCart(cart);
+        Wishlist wishlist =new Wishlist("",email,product_name,product_price,product_category,product_rating,date_added,product_imagename);
+        Call<WishlistMessageModel> wishlistModelCall=tcAPI.addToWishlist(wishlist);
 
         try {
-            Response<CartMessageModel> cartresponse = cartModelCall.execute();
-            if (cartresponse.body().getMessage_success()!= null) {
+            Response<WishlistMessageModel> wishlistResponse = wishlistModelCall.execute();
+            if (wishlistResponse.body().getMessage_success()!= null) {
                 isSuccess=true;
             }
             else{
@@ -54,29 +58,29 @@ public class CartBL {
         return isSuccess;
     }
 
-    public List<Cart> getCart(String cartEmail){
+    public List<Wishlist> getWishlist(String wishlistEmail){
         tcAPI= URL.getInstance().create(TCAPI.class);
-        Call<List<Cart>> cartList=tcAPI.getCart(cartEmail);
+        Call<List<Wishlist>> wishList=tcAPI.getWishlist(wishlistEmail);
 
         try {
-            Response<List<Cart>> cartResponse = cartList.execute();
+            Response<List<Wishlist>> wishlistResponse = wishList.execute();
             System.out.println("Getting data");
-            if (cartResponse.isSuccessful()) {
-                cartList1 = cartResponse.body();
+            if (wishlistResponse.isSuccessful()) {
+                wishlist1 = wishlistResponse.body();
 
-                return cartList1;
+                return wishlist1;
             }
 
         }catch (IOException e){
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
-        return cartList1;
+        return wishlist1;
     }
 
-    public boolean deleteFromCart(String id) {
+    public boolean deleteFromWishlist(String id) {
         tcAPI = URL.getInstance().create(TCAPI.class);
-        Call<Void> voidCall = tcAPI.deleteCartRow(id);
+        Call<Void> voidCall = tcAPI.deleteWishlistRow(id);
         try {
             Response<Void> deleteResponse = voidCall.execute();
             if (deleteResponse.isSuccessful()) {

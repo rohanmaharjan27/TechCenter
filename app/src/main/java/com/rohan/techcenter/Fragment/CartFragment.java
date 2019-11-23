@@ -140,16 +140,16 @@ public class CartFragment extends Fragment {
     public void getCart(){
 
         preferences = getContext().getSharedPreferences("loginPreference", Context.MODE_PRIVATE);
-        String cartPhone = preferences.getString("email", "");
+        String cartEmail = preferences.getString("email", "");
 
         CartBL cartBL=new CartBL();
         StrictMode();
 
-        if(cartBL.getCart(cartPhone) != null) {
-            cartList = cartBL.getCart(cartPhone);
+        if(cartBL.getCart(cartEmail) != null) {
+            cartList = cartBL.getCart(cartEmail);
         }
         else {
-            Toasty.error(getActivity(),"Error while displaying cart",Toast.LENGTH_LONG).show();
+            Toasty.error(getActivity(),"Error while displaying cart",Toasty.LENGTH_LONG).show();
         }
 
     }
