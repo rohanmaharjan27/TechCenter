@@ -7,6 +7,7 @@ import com.rohan.techcenter.Model.OrderHistory;
 import com.rohan.techcenter.Model.Product;
 import com.rohan.techcenter.Model.Rating;
 import com.rohan.techcenter.Model.Register;
+import com.rohan.techcenter.Model.Shop;
 import com.rohan.techcenter.Model.TotalRatingModel;
 import com.rohan.techcenter.Model.User;
 import com.rohan.techcenter.Model.Wishlist;
@@ -68,5 +69,8 @@ public interface TCAPI {
 
     @DELETE("wishlists/removefromwishlist/{id}")
     Call<Void> deleteWishlistRow(@Path("id") String id);
+
+    @GET("shops/shop")
+    Call<List<Shop>> getShops();
 
 }

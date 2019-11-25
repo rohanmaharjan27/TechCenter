@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activity.OrderHistoryActivity"></activity>
+        <activity android:name=".Activity.ShopDetailsActivity"></activity>
+        <activity android:name=".Activity.OrderHistoryActivity" />
         <activity android:name=".Activity.SplashScreen" />
         <activity android:name=".Activity.AboutUsActivity" />
         <activity android:name=".Activity.WishlistActivity" />
