@@ -13,9 +13,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.rohan.techcenter.Adapter.CategoryAdapter;
 import com.rohan.techcenter.Adapter.ShopAdapter;
 import com.rohan.techcenter.Adapter.SliderAdapter;
+import com.rohan.techcenter.BL.ProductBL;
 import com.rohan.techcenter.BL.ShopBL;
+import com.rohan.techcenter.Model.Category;
 import com.rohan.techcenter.Model.Shop;
 import com.rohan.techcenter.R;
 import com.smarteist.autoimageslider.IndicatorAnimations;
@@ -28,8 +31,9 @@ import java.util.List;
 import es.dmoral.toasty.Toasty;
 
 public class HomeFragment extends Fragment {
-    RecyclerView recyclerView_shops;
+    RecyclerView recyclerView_shops,recyclerView_categories;
     List<Shop> shopList = new ArrayList<>();
+    List<Category> categoryList = new ArrayList<>();
 
 
     @Override
@@ -40,6 +44,16 @@ public class HomeFragment extends Fragment {
         View view= inflater.inflate(R.layout.fragment_home, container, false);
 
         recyclerView_shops=view.findViewById(R.id.recyclerViewShops);
+        recyclerView_categories=view.findViewById(R.id.recyclerViewCategories);
+
+        createCategoryList();
+        if(categoryList.size() !=0) {
+            recyclerView_categories.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+            recyclerView_categories.setAdapter(new CategoryAdapter(getContext(), categoryList, HomeFragment.this));
+        }else {
+            recyclerView_categories.setVisibility(View.GONE);
+        }
+
         SliderView sliderView = view.findViewById(R.id.imageSlider);
 
         SliderAdapter adapter= new SliderAdapter(getContext());
@@ -78,5 +92,22 @@ public class HomeFragment extends Fragment {
             Toasty.error(getActivity(),"Error while displaying shops",Toasty.LENGTH_LONG).show();
         }
     }
+
+    private void createCategoryList(){
+        ProductBL productBL =  new ProductBL();
+        StrictMode();
+        categoryList = productBL.getCategory();
+    }
+
+    public void showByCategory(String category){
+        Bundle bundle = new Bundle();
+        bundle.putString("category",category);
+        Fragment fragment = new CategoryFragment();
+        fragment.setArguments(bundle);
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                fragment,"TestFrag").commit();
+
+    }
+
 
 }

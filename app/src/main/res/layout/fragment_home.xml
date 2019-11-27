@@ -11,9 +11,6 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-
-
         <com.smarteist.autoimageslider.SliderView
             android:layout_width="match_parent"
             android:layout_height="@dimen/_160sdp"
@@ -48,10 +45,9 @@
             />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/categories"
+            android:id="@+id/recyclerViewCategories"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_20sdp"
             android:layout_below="@id/categories_title"
             />
 
@@ -66,7 +62,7 @@
             android:fontFamily="@font/open_sans"
             android:textSize="@dimen/_13sdp"
             android:id="@+id/shops_title"
-            android:layout_below="@+id/categories"
+            android:layout_below="@+id/recyclerViewCategories"
             />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -76,25 +72,8 @@
             android:layout_below="@id/shops_title"
             />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:layout_marginTop="@dimen/_8sdp"
-            android:textColor="#000"
-            android:gravity="center"
-            android:fontFamily="@font/open_sans"
-            android:textSize="@dimen/_13sdp"
-            android:id="@+id/type_title"
-            android:layout_below="@+id/recyclerViewShops"
-            />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_types"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/type_title"
-            />
+
 
     </RelativeLayout>
 </ScrollView>

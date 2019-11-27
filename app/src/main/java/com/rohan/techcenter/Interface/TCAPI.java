@@ -3,6 +3,7 @@ package com.rohan.techcenter.Interface;
 import com.rohan.techcenter.Model.AuthUser;
 import com.rohan.techcenter.Model.Cart;
 import com.rohan.techcenter.Model.CartMessageModel;
+import com.rohan.techcenter.Model.Category;
 import com.rohan.techcenter.Model.OrderHistory;
 import com.rohan.techcenter.Model.Product;
 import com.rohan.techcenter.Model.Rating;
@@ -72,5 +73,11 @@ public interface TCAPI {
 
     @GET("shops/shop")
     Call<List<Shop>> getShops();
+
+    @GET("categories")
+    Call<List<Category>> getCategories();
+
+    @GET("products/product/{category}")
+    Call<List<Product>> getProductByCategory(@Path("category") String category);
 
 }

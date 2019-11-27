@@ -29,7 +29,8 @@ public class AboutUsActivity extends AppCompatActivity {
 
         tv_aboutUs_text.setText("TechCenter is user-friendly android application for purchasing computer products"+"\r\n"+"\r\n" +
                 "Developer: Rohan Maharjan"+"\r\n"+"\r\n" +
-                "This application has been developed to understand aspects of mobile shopping apps and their impact on customer behaviour");
+                "This application has been developed to understand aspects of mobile shopping apps and their impact on customer behaviour."+"\r\n"+"\r\n" +
+                "Reftrofit 2 API and MongoDB required.");
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
