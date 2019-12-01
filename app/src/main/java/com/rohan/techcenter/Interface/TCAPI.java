@@ -20,6 +20,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
@@ -31,6 +32,9 @@ public interface TCAPI {
 
     @POST ("users/login")
     Call<AuthUser> getUser(@Body User user);
+
+    @GET("users/profile")
+    Call<User> getProfile(@Header("Authorization") String token);
 
     @GET("products/")
     Call<List<Product>> getProduct();
@@ -79,5 +83,8 @@ public interface TCAPI {
 
     @GET("products/product/{category}")
     Call<List<Product>> getProductByCategory(@Path("category") String category);
+
+    @POST("users/logout")
+    Call<Register> logout(@Header("Authorization") String token);
 
 }

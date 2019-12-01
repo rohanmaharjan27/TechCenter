@@ -18,7 +18,6 @@
         <activity android:name=".Activity.OrderHistoryActivity" />
         <activity android:name=".Activity.SplashScreen" />
         <activity android:name=".Activity.AboutUsActivity" />
-        <activity android:name=".Activity.WishlistActivity" />
         <activity android:name=".Activity.ProfileUpdateActivity" />
         <activity android:name=".Activity.ProductDetailsActivity" />
         <activity android:name=".Activity.MainActivity" />

@@ -10,7 +10,7 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.rohan.techcenter.Fragment.CartFragment;
 import com.rohan.techcenter.Fragment.HomeFragment;
-import com.rohan.techcenter.Fragment.GamingFragment;
+import com.rohan.techcenter.Fragment.WishlistFragment;
 import com.rohan.techcenter.Fragment.ProductFragment;
 import com.rohan.techcenter.Fragment.ProfileFragment;
 import com.rohan.techcenter.R;
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                             break;
 
                         case R.id.action_gaming:
-                            selectedFragment=new GamingFragment();
+                            selectedFragment=new WishlistFragment();
                             break;
 
                         case R.id.action_home:

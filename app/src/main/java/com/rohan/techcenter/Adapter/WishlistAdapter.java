@@ -10,9 +10,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.rohan.techcenter.BL.WishlistBL;
+import com.rohan.techcenter.Fragment.WishlistFragment;
 import com.rohan.techcenter.Model.Wishlist;
 import com.rohan.techcenter.R;
 import com.rohan.techcenter.URL.URL;
@@ -25,11 +27,14 @@ import es.dmoral.toasty.Toasty;
 public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.WishlistViewHolder> {
     Context context;
     List<Wishlist> wishList;
+    Fragment fragment;
 
-    public WishlistAdapter(Context context, List<Wishlist> wishList) {
+    public WishlistAdapter(Context context, List<Wishlist> wishList, Fragment fragment) {
         this.context = context;
         this.wishList = wishList;
+        this.fragment = fragment;
     }
+
 
     @NonNull
     @Override
@@ -59,7 +64,8 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.Wishli
                 WishlistBL wishlistBL = new WishlistBL();
 
                 if (wishlistBL.deleteFromWishlist(wishlist.get_id())) {
-                    Toasty.success(context, "Product removed from wishlist", Toasty.LENGTH_LONG).show();
+                    ((WishlistFragment) fragment).refreshFragment();
+                    Toasty.success(context, "Product Removed from Wishlist ", Toasty.LENGTH_LONG).show();
 
                 }else {
                     return;
