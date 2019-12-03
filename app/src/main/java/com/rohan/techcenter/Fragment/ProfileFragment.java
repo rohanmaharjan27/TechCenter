@@ -30,6 +30,7 @@ import com.rohan.techcenter.Model.Register;
 import com.rohan.techcenter.Model.User;
 import com.rohan.techcenter.R;
 import com.rohan.techcenter.URL.URL;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 
@@ -93,6 +94,9 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         email=user.getEmail();
         password=user.getPassword();
         userimagename=user.getUserimagename();
+
+        String url= URL.BASE_URL+user.getUserimagename();
+        Picasso.with(getContext()).load(url).into(pu_userImage);
         usertype=user.getUsertype();
 
         tv_fullname.setText(firstName+" "+lastName);

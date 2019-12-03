@@ -52,10 +52,13 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
         actionBar.setDisplayHomeAsUpEnabled(true);
         bundle = getIntent().getExtras();
 
+        if (bundle != null) {
+            productName=bundle.getString("productName");
+        }
         init();
 
         if (bundle != null) {
-            productName=bundle.getString("productName");
+
             String image = bundle.getString("productImageName");
             Picasso.with(getApplicationContext()).load(image).into(pda_img);
             pda_name.setText(bundle.getString("productName"));

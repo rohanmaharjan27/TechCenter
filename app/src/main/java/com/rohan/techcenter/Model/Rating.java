@@ -4,6 +4,7 @@ public class Rating {
     String email,product_name,_id,rating;
 
     public Rating(String pda_email, String product_name) {
+        this.email=pda_email;
         this.product_name = product_name;
     }
 

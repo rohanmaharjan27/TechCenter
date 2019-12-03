@@ -43,9 +43,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         preferences = getSharedPreferences("loginPreference",MODE_PRIVATE);
         editor = preferences.edit();
 
-        if (preferences.getBoolean("loginStatus",false)){
-            startActivity(new Intent(this,MainActivity.class));
-            finish();
+        if (preferences.getBoolean("loginStatus",false)) {
+            String token = preferences.getString("token","");
+            if (token != "") {
+                startActivity(new Intent(this, MainActivity.class));
+                finish();
+            }
         }
 
         loginEmail=findViewById(R.id.la_email);
