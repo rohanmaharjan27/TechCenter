@@ -32,17 +32,17 @@ public class SliderAdapter extends SliderViewAdapter<SliderAdapter.SliderAdapter
 
             case 1:
                 Glide.with(viewHolder.itemView)
-                        .load(R.drawable.ic_launcher_foreground)
+                        .load(R.drawable.blackwidowchroma)
                         .into(viewHolder.sliderImage);
                 break;
             case 2:
                 Glide.with(viewHolder.itemView)
-                        .load(R.drawable.ic_launcher_background)
+                        .load(R.drawable.kraken)
                         .into(viewHolder.sliderImage);
                 break;
             default:
                 Glide.with(viewHolder.itemView)
-                        .load(R.drawable.ic_dollar)
+                        .load(R.drawable.fireflyv2)
                         .into(viewHolder.sliderImage);
                 break;
         }

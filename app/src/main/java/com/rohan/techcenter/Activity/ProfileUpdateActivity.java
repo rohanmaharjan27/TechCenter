@@ -1,25 +1,31 @@
 package com.rohan.techcenter.Activity;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.rohan.techcenter.R;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
+import java.util.regex.Pattern;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import es.dmoral.toasty.Toasty;
@@ -35,10 +41,31 @@ public class ProfileUpdateActivity extends AppCompatActivity implements View.OnC
     private static final int PICK_IMAGE=1;
     private static final int CAMERA_REQUEST=2;
 
+    ActionBar actionBar;
+    Bundle bundle;
+
+    private static final Pattern PASSWORD_PATTERN=
+            Pattern.compile("^" +
+                    //"(?=.*[0-9])" +         //at least 1 digit
+                    //"(?=.*[a-z])" +         //at least 1 lower case letter
+                    //"(?=.*[A-Z])" +         //at least 1 upper case letter
+                    "(?=.*[a-zA-Z])" +      //any letter
+                    "(?=.*[@#$%^&+=*])" +    //at least 1 special character
+                    "(?=\\S+$)" +           //no white spaces
+                    ".{7,}" +               //at least 7 characters
+                    "$");
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_update);
+
+        actionBar=getSupportActionBar();
+        actionBar.setTitle("Product Details");
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3d5afe")));
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        bundle = getIntent().getExtras();
 
         pu_userImage=findViewById(R.id.pu_userImage);
 
@@ -56,6 +83,19 @@ public class ProfileUpdateActivity extends AppCompatActivity implements View.OnC
 
         btn_update=findViewById(R.id.pu_update);
         btn_update.setOnClickListener(this);
+
+        bundle = getIntent().getExtras();
+
+        if (bundle != null) {
+
+            String image = bundle.getString("userImageName");
+            Picasso.with(getApplicationContext()).load(image).into(pu_userImage);
+            pu_firstName.setText(bundle.getString("firstName"));
+            pu_lastName.setText(bundle.getString("lastName"));
+            pu_phone.setText(bundle.getString("phone"));
+            pu_address.setText(bundle.getString("address"));
+            pu_password.setText(bundle.getString("password"));
+        }
     }
 
     private boolean validate() {
@@ -79,10 +119,21 @@ public class ProfileUpdateActivity extends AppCompatActivity implements View.OnC
             pu_address.requestFocus();
             return false;
         }
-        if (TextUtils.isEmpty(pu_password.getText().toString())) {
-            pu_password.setError("Enter Password");
+
+        String passwordInput=pu_password.getText().toString().trim();
+
+        if (passwordInput.isEmpty()){
+            pu_password.setError("Field Can't Be Empty!");
             pu_password.requestFocus();
             return false;
+        }
+        else if (!PASSWORD_PATTERN.matcher(passwordInput).matches()){
+            pu_password.setError("Password too weak!"+ "\n"+ "Minimum 7 characters including 1 special character (@#$%^&+=*)");
+            pu_password.requestFocus();
+            return false;
+        }
+        else {
+            pu_password.setError(null);
         }
         return true;
     }
@@ -170,5 +221,10 @@ public class ProfileUpdateActivity extends AppCompatActivity implements View.OnC
                 finish();
                 break;
         }
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        this.finish();
+        return true;
     }
 }

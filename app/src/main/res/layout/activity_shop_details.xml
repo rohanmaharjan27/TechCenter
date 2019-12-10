@@ -5,6 +5,7 @@
     xmlns:mapbox="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFF"
     tools:context=".Activity.ShopDetailsActivity"
     android:orientation="vertical">
 
@@ -18,6 +19,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
         android:id="@+id/shop_name"
         android:layout_gravity="center"
         android:fontFamily="@font/open_sans"
@@ -51,7 +53,7 @@
 
     <com.mapbox.mapboxsdk.maps.MapView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_200sdp"
+        android:layout_height="@dimen/_230sdp"
         android:layout_marginTop="@dimen/_20sdp"
         android:id="@+id/map"
         mapbox:mapbox_cameraTargetLat="27.700769"

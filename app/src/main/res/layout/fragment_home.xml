@@ -34,13 +34,39 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:text="Categories"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="Welcome to TechCenter!"
             android:textColor="#000"
             android:gravity="center"
-            android:fontFamily="@font/open_sans"
-            android:textSize="@dimen/_13sdp"
+            android:fontFamily="@font/open_sans_bold"
+            android:textSize="@dimen/_16sdp"
             android:layout_below="@+id/imageSlider"
+            android:id="@+id/homeText1"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="Get the best products with great pricing!"
+            android:textColor="#000"
+            android:gravity="center"
+            android:fontFamily="@font/open_sans_semibold"
+            android:textSize="@dimen/_14sdp"
+            android:layout_below="@+id/homeText1"
+            android:id="@+id/homeText2"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:text="View Our Categories"
+            android:textColor="#000"
+            android:gravity="center"
+            android:fontFamily="@font/open_sans_bold"
+            android:textSize="@dimen/_13sdp"
+            android:layout_below="@+id/homeText2"
             android:id="@+id/categories_title"
             />
 
@@ -49,6 +75,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/categories_title"
+            android:scrollbars="horizontal"
+            android:fadeScrollbars="false"
             />
 
 
@@ -56,10 +84,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_8sdp"
-            android:text="Shops"
+            android:text="Checkout Our Stores"
             android:textColor="#000"
             android:gravity="center"
-            android:fontFamily="@font/open_sans"
+            android:fontFamily="@font/open_sans_bold"
             android:textSize="@dimen/_13sdp"
             android:id="@+id/shops_title"
             android:layout_below="@+id/recyclerViewCategories"
@@ -70,6 +98,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/shops_title"
+            android:scrollbars="horizontal"
+            android:fadeScrollbars="false"
             />
 
 

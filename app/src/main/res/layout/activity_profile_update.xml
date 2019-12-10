@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#cfeaff"
     tools:context=".Activity.LoginActivity">
 
 <RelativeLayout
@@ -47,6 +48,7 @@
         android:layout_height="@dimen/_30sdp"
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginLeft="@dimen/_50sdp"
+        android:textAlignment="center"
         android:background="@drawable/bg_edit_text"
         android:fontFamily="@font/open_sans"
         android:layout_centerHorizontal="true"
@@ -58,6 +60,7 @@
         android:layout_height="@dimen/_30sdp"
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginLeft="@dimen/_50sdp"
+        android:textAlignment="center"
         android:background="@drawable/bg_edit_text"
         android:fontFamily="@font/open_sans"
         android:layout_centerHorizontal="true"
@@ -69,6 +72,7 @@
         android:layout_height="@dimen/_30sdp"
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginLeft="@dimen/_50sdp"
+        android:textAlignment="center"
         android:background="@drawable/bg_edit_text"
         android:fontFamily="@font/open_sans"
         android:layout_centerHorizontal="true"
@@ -80,6 +84,7 @@
         android:layout_height="@dimen/_30sdp"
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginLeft="@dimen/_50sdp"
+        android:textAlignment="center"
         android:background="@drawable/bg_edit_text"
         android:fontFamily="@font/open_sans"
         android:layout_centerHorizontal="true"
@@ -91,6 +96,7 @@
         android:layout_height="@dimen/_30sdp"
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginLeft="@dimen/_50sdp"
+        android:textAlignment="center"
         android:background="@drawable/bg_edit_text"
         android:fontFamily="@font/open_sans"
         android:layout_centerHorizontal="true"

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFF"
     tools:context=".Fragment.CategoryFragment">
 
     <TextView
@@ -38,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="@dimen/_4sdp"
-        android:background="#F5F5F5"
+        android:background="#FFF"
         android:layout_below="@+id/categorySearch">
     </androidx.recyclerview.widget.RecyclerView>
 

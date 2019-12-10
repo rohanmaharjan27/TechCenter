@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFF"
     tools:context=".Fragment.ProductFragment">
 
     <TextView
@@ -12,7 +13,7 @@
         android:text="Products"
         android:layout_centerHorizontal="true"
         android:textColor="#000000"
-        android:fontFamily="@font/open_sans_light"
+        android:fontFamily="@font/open_sans_bold"
         android:id="@+id/pf_title"
         />
 
@@ -38,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="@dimen/_5sdp"
-        android:background="#F5F5F5"
+        android:background="#FFF"
         android:layout_below="@+id/searchProduct">
     </androidx.recyclerview.widget.RecyclerView>
 
