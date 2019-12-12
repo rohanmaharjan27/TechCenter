@@ -11,18 +11,22 @@ import com.rohan.techcenter.Model.Register;
 import com.rohan.techcenter.Model.Shop;
 import com.rohan.techcenter.Model.TotalRatingModel;
 import com.rohan.techcenter.Model.User;
+import com.rohan.techcenter.Model.UserImg;
 import com.rohan.techcenter.Model.Wishlist;
 import com.rohan.techcenter.Model.WishlistMessageModel;
 
 import java.util.List;
 
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 
 public interface TCAPI {
@@ -35,6 +39,13 @@ public interface TCAPI {
 
     @GET("users/profile")
     Call<User> getProfile(@Header("Authorization") String token);
+
+    @Multipart
+    @POST("users/userImageUpload")
+    Call<UserImg> uploadImage (@Part MultipartBody.Part body);
+
+    @PUT("users/updateUser/{email}")
+    Call<Boolean> updateUser(@Path("email") String email, @Body User user);
 
     @GET("products/")
     Call<List<Product>> getProduct();

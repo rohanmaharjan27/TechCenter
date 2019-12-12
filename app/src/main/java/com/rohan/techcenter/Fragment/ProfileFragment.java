@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -66,7 +67,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         preferences = getContext().getSharedPreferences("loginPreference", Context.MODE_PRIVATE);
         editor = preferences.edit();
 
-        pu_userImage = view.findViewById(R.id.user_img);
+        pu_userImage = view.findViewById(R.id.pf_userimg);
         tv_fullname = view.findViewById(R.id.profile_name);
 
         btn_editProfile = view.findViewById(R.id.btn_editProfile);
@@ -95,7 +96,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         password=user.getPassword();
         userimagename=user.getUserimagename();
 
-        String url= URL.BASE_URL+user.getUserimagename();
+        String url= URL.BASE_URL+"user-images/"+userimagename;
         Picasso.with(getContext()).load(url).into(pu_userImage);
         usertype=user.getUsertype();
 

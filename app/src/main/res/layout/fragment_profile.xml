@@ -22,7 +22,7 @@
                 android:layout_height="@dimen/_100sdp"
                 android:layout_marginTop="@dimen/_70sdp"
                 android:layout_centerHorizontal="true"
-                android:id="@+id/user_img"
+                android:id="@+id/pf_userimg"
                 />
         </RelativeLayout>
 

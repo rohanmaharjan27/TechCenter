@@ -101,6 +101,19 @@
         android:fontFamily="@font/open_sans"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/pu_address"
+        android:editable="false"
+        android:id="@+id/pu_email"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginLeft="@dimen/_50sdp"
+        android:textAlignment="center"
+        android:background="@drawable/bg_edit_text"
+        android:fontFamily="@font/open_sans"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/pu_email"
         android:id="@+id/pu_password"/>
 
     <Button
@@ -113,7 +126,7 @@
         android:layout_centerHorizontal="true"
         android:background="@drawable/bg_btn"
         android:fontFamily="@font/open_sans_bold"
-        android:text="Update"
+        android:text="Save Changes"
         android:textAllCaps="false"
         android:textColor="#FFF"
         android:textSize="@dimen/_13sdp"
