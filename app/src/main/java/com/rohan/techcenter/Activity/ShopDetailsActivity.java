@@ -18,6 +18,7 @@ import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.mapbox.mapboxsdk.maps.Style;
 import com.rohan.techcenter.Adapter.ShopAdapter;
 import com.rohan.techcenter.R;
+import com.rohan.techcenter.URL.URL;
 import com.squareup.picasso.Picasso;
 
 public class ShopDetailsActivity extends AppCompatActivity {
@@ -70,11 +71,11 @@ public class ShopDetailsActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            String image = bundle.getString("shopImageName");
+            String url= URL.BASE_URL+"images/"+bundle.getString("shopImageName2");
             String name= bundle.getString("shopName");
             String description = bundle.getString("shopDescription");
             String rating = bundle.getString("shopRating");
-            Picasso.with(getApplicationContext()).load(image).into(iv_shop);
+            Picasso.with(getApplicationContext()).load(url).into(iv_shop);
 
             tv_shopName.setText(name);
             tv_shopDesc.setText(description);

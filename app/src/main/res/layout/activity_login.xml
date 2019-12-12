@@ -14,15 +14,16 @@
 
     <ImageView
         android:id="@+id/la_ivLogo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_launcher_foreground"/>
+        android:layout_width="@dimen/_75sdp"
+        android:layout_height="@dimen/_75sdp"
+        android:src="@drawable/logo"/>
 
     <TextView
         android:id="@+id/la_tvWelcomeTitle"
         android:layout_below="@id/la_ivLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
         android:text="Welcome to TechCenter,"
         android:textColor="#000"
         android:fontFamily="@font/open_sans_semibold"

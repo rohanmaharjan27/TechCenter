@@ -17,9 +17,9 @@
 
     <ImageView
         android:id="@+id/ra_ivLogo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_launcher_foreground"
+        android:layout_width="@dimen/_75sdp"
+        android:layout_height="@dimen/_75sdp"
+        android:src="@drawable/logo"
         android:layout_centerHorizontal="true"/>
 
     <TextView
@@ -39,7 +39,7 @@
         android:layout_below="@id/ra_tvWelcomeTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:text="Sign Up"
         android:textColor="#000"
         android:fontFamily="@font/open_sans_semibold"
@@ -52,7 +52,7 @@
             android:layout_below="@id/ra_tvWelcomeSubTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:hint="Enter First Name"
             android:fontFamily="@font/open_sans"
             android:inputType="text"/>

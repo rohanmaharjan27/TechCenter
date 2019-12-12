@@ -8,7 +8,7 @@
         android:id="@+id/product_card"
         android:layout_width="@dimen/_140sdp"
         android:layout_height="@dimen/_200sdp"
-        android:layout_margin="@dimen/_10sdp"
+        android:layout_margin="@dimen/_7sdp"
         app:cardCornerRadius="@dimen/_8sdp">
 
         <RelativeLayout
@@ -48,7 +48,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/sample_productName"
                 android:drawableLeft="@drawable/ic_dollar"
-                android:layout_marginTop="@dimen/_8sdp"
                 android:layout_centerHorizontal="true"
                 android:fontFamily="@font/open_sans"
                 android:text="500"
@@ -62,7 +61,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/sample_productPrice"
-                android:layout_marginTop="@dimen/_9sdp"
                 android:layout_centerHorizontal="true"
                 android:drawableLeft="@drawable/ic_star"
                 android:drawablePadding="@dimen/_5sdp"

@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                             selectedFragment=new ProductFragment();
                             break;
 
-                        case R.id.action_gaming:
+                        case R.id.action_wishlist:
                             selectedFragment=new WishlistFragment();
                             break;
 

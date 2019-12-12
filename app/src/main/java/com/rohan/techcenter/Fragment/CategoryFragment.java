@@ -4,6 +4,7 @@ package com.rohan.techcenter.Fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -51,7 +52,7 @@ public class CategoryFragment extends Fragment {
         }
         productAdapter = new ProductAdapter(getContext(),productList);
         recyclerViewCategory.setAdapter(productAdapter);
-        recyclerViewCategory.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerViewCategory.setLayoutManager(new GridLayoutManager(getContext(),2));
         categorySearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

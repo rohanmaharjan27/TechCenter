@@ -54,7 +54,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         holder.tv_price.setText(cart.getProduct_price());
         holder.et_quantity.setText(cart.getProduct_quantity());
 
-        String url= URL.BASE_URL+cart.getProduct_imagename();
+        String url= URL.BASE_URL+"images/"+cart.getProduct_imagename();
         Picasso.with(context).load(url).into(holder.img_product);
 
         holder.btn_add.setOnClickListener(new View.OnClickListener() {

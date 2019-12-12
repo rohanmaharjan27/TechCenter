@@ -55,7 +55,7 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.Wishli
         holder.tv_rating.setText(wishlist.getProduct_rating());
         holder.tv_date.setText(wishlist.getDate_added());
 
-        String url= URL.BASE_URL+wishlist.getProduct_imagename();
+        String url= URL.BASE_URL+"images/"+wishlist.getProduct_imagename();
         Picasso.with(context).load(url).into(holder.img_product);
 
         holder.btn_remove.setOnClickListener(new View.OnClickListener() {
