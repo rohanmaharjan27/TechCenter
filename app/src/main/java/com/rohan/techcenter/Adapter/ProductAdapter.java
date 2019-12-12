@@ -49,7 +49,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         holder.tv_price.setText(product.getProduct_price());
         holder.tv_totalRating.setText(productBL.getTotalRating(product.getProduct_name()));
 
-        String url= URL.BASE_URL+product.getProduct_imagename();
+        String url= URL.BASE_URL+"images/"+product.getProduct_imagename();
         Picasso.with(context).load(url).into(holder.img_product);
 
         holder.cv_product.setOnClickListener(new View.OnClickListener() {
@@ -97,7 +97,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     }
 
-    public void filterList(List<Product> productList){
+    public void filterList(List<Product> productList1){
         productList = productList1;
         notifyDataSetChanged();
 

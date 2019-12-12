@@ -52,7 +52,6 @@
             android:textStyle="bold"
             android:textSize="@dimen/_11sdp"
             android:textColor="#ffffff"
-            android:textAllCaps="false"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/_10sdp"/>
 

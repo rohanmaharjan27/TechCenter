@@ -48,7 +48,7 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
         String[] date = orderHistory.getDate().split("T",0);
         holder.tv_date.setText("Order Date: "+date[0]);
         holder.tv_paymentType.setText(orderHistory.getPayment_type());
-        String url= URL.BASE_URL+orderHistory.getProduct_imagename();
+        String url= URL.BASE_URL+"images/"+orderHistory.getProduct_imagename();
         Picasso.with(context).load(url).into(holder.img_product);
 
     }

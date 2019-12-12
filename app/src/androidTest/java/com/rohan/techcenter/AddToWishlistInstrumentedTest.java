@@ -36,7 +36,7 @@ public class AddToWishlistInstrumentedTest {
         onView(withId(R.id.recyclerViewProducts)).perform(actionOnItemAtPosition(0, click()));
 
         onView(withId(R.id.scrollViewProduct)).perform(swipeUp());
-        onView(Matchers.allOf(ViewMatchers.withId(R.id.btn_wishlist), ViewMatchers.withText("Add To Wishlist")))
+        onView(Matchers.allOf(ViewMatchers.withId(R.id.btn_wishlist), ViewMatchers.withText("Add to Wishlist")))
                 .perform(ViewActions.click());
 
         onView(ViewMatchers.withText("Added to Wishlist!"))

@@ -41,7 +41,7 @@ public class AddToCartInstrumentedTest {
         onView(withId(R.id.recyclerViewProducts)).perform(actionOnItemAtPosition(0, click()));
 
         onView(withId(R.id.scrollViewProduct)).perform(swipeUp());
-        onView(Matchers.allOf(ViewMatchers.withId(R.id.btn_cart), ViewMatchers.withText("Add To Cart")))
+        onView(Matchers.allOf(ViewMatchers.withId(R.id.btn_cart), ViewMatchers.withText("Add to Cart")))
                 .perform(ViewActions.click());
 
         onView(ViewMatchers.withText("Added to Cart!"))

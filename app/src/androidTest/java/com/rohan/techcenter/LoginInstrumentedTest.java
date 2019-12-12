@@ -28,11 +28,11 @@ public class LoginInstrumentedTest {
     @Test
     public void TestUI() throws Exception {
         onView(withId(R.id.la_email))
-                .perform(typeText("rohanmaharjan123@hotmail.com"))
+                .perform(typeText("rohan123@gmail.com"))
                 .perform(closeSoftKeyboard());
 
         onView(withId(R.id.la_password))
-                .perform(typeText("*rohan12345"))
+                .perform(typeText("*rohan123"))
                 .perform(closeSoftKeyboard());
 
         onView(withId(R.id.la_btnLogin))

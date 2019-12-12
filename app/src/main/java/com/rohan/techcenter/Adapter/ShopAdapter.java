@@ -48,7 +48,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.ShopViewHolder
     public void onBindViewHolder(@NonNull ShopAdapter.ShopViewHolder holder, int position) {
         final Shop shop = shopList.get(position);
 
-        String url= URL.BASE_URL+shop.getShop_imagename();
+        String url= URL.BASE_URL+"images/"+shop.getShop_imagename();
         Picasso.with(context).load(url).into(holder.img_shop);
 
         holder.tv_shop_name.setText(shop.getShop_name());

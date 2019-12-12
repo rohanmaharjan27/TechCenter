@@ -35,15 +35,18 @@ public class OrderInstrumentedTest {
     @Test
     public void TestUI() throws Exception {
 
-        Espresso.onView(ViewMatchers.withId(R.id.action_cart))
+        onView(ViewMatchers.withId(R.id.action_cart))
                 .perform(ViewActions.click());
 
-        Espresso.onView(ViewMatchers.withId(R.id.cart_btn_checkout))
+        onView(withId(R.id.scrollViewCart)).perform(swipeUp());
+
+        onView(ViewMatchers.withId(R.id.cart_btn_checkout))
                 .perform(ViewActions.click());
 
         onView(allOf(withId(R.id.btnCashAtDelivery),withText("PAY AT DELIVERY"))).perform(click());
 
-        Espresso.onView(ViewMatchers.withText("Order Placed Successfully"))
+
+        onView(ViewMatchers.withText("Order Placed Successfully"))
                 .inRoot(RootMatchers.withDecorView(IsNot.not(Matchers.is(orderTest.getActivity().getWindow().getDecorView()))))
                 .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
 

@@ -22,6 +22,7 @@ import com.rohan.techcenter.BL.RatingBL;
 import com.rohan.techcenter.BL.WishlistBL;
 import com.rohan.techcenter.Model.Rating;
 import com.rohan.techcenter.R;
+import com.rohan.techcenter.URL.URL;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
@@ -59,12 +60,14 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
 
         if (bundle != null) {
 
-            String image = bundle.getString("productImageName");
-            Picasso.with(getApplicationContext()).load(image).into(pda_img);
+            String url= URL.BASE_URL+"images/"+bundle.getString("productImageName2");
+            Picasso.with(getApplicationContext()).load(url).into(pda_img);
+
             pda_name.setText(bundle.getString("productName"));
-            pda_price.setText(bundle.getString("productPrice"));
-            pda_category.setText(bundle.getString("productCategory"));
-            pda_manufacturer.setText(bundle.getString("productManufacturer"));
+            pda_price.setText("Price: "+bundle.getString("productPrice"));
+            pda_category.setText("Category: "+bundle.getString("productCategory"));
+            pda_manufacturer.setText("Manufacturer: "+bundle.getString("productManufacturer"));
+            pda_rating.setText(bundle.getString("productRating"));
             pda_desc.setText(bundle.getString("productDescription"));
         }
 

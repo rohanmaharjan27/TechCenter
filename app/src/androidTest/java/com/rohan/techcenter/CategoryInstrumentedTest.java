@@ -31,7 +31,7 @@ public class CategoryInstrumentedTest {
 
         onView(allOf(withText("Mouse"))).perform(click());
 
-        onView(withText("Razer DeathAdder")).check(matches(isDisplayed()));
+        onView(withText("Razer DeathAdder Elite")).check(matches(isDisplayed()));
 
         categoryTest.finishActivity();
     }

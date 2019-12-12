@@ -53,7 +53,7 @@ public class TechCenterUnitTest {
         ProductBL productBL = new ProductBL();
         List<Product> result =productBL.getProduct();
         String productName = result.get(0).getProduct_name();
-        assertEquals("Razer DeathAdder",productName);
+        assertEquals("Razer DeathAdder Elite",productName);
 
     }
 
@@ -62,7 +62,7 @@ public class TechCenterUnitTest {
     @Test
     public void  addItemToCartTest()
     {
-        CartBL cartBL = new CartBL("rohandai123@gmail.com","Razer DeathAdder","70","2","140");
+        CartBL cartBL = new CartBL("rohandai123@gmail.com","Razer DeathAdder Elite","75","1","imageFile-1576149573474.jpg");
         boolean result = cartBL.addToCart();
         assertEquals(true,result);
     }
@@ -72,7 +72,7 @@ public class TechCenterUnitTest {
     @Test
     public void ratingTest()
     {
-        Rating rating = new Rating("rohandai123@gmail.com","Razer DeathAdder","5.0");
+        Rating rating = new Rating("rohandai123@gmail.com","Razer Blackwidow Chroma","5.0");
         RatingBL  ratingBL = new RatingBL();
         String result = ratingBL.addRating(rating);
         assertEquals("Success",result);
@@ -82,16 +82,16 @@ public class TechCenterUnitTest {
     @Test
     public void viewRatingTest()
     {
-        Rating rating = new Rating("rohandai123@gmail.com","Razer DeathAdder");
+        Rating rating = new Rating("rohandai123@gmail.com","Razer DeathAdder Elite");
         RatingBL ratingBL = new RatingBL();
         String result = ratingBL.getMyRating(rating).get(0).getRating();
-        assertEquals("5.0",result);
+        assertEquals("4.0",result);
     }
 
     // UPDATE RATING TEST
     @Test
     public void updateRating(){
-        String id="5d8369c908be163940ed2d75";
+        String id="5df223c6ddd9ac374415f468";
         Float newRating = 4.5f;
         Rating rating = new Rating(id,newRating);
         RatingBL ratingBL = new RatingBL();
@@ -100,14 +100,6 @@ public class TechCenterUnitTest {
         assertThat(message,is("Rating Updated Successfully"));
     }
 
-    // ADD TO CART TEST
-    @Test
-    public void  addCartTest()
-    {
-        CartBL cartBL = new CartBL("9849329276","momo","150","1","momo.jpg");
-        boolean result = cartBL.addToCart();
-        assertEquals(true,result);
-    }
 
     // GET CATEGORY TEST
     @Test
@@ -117,12 +109,4 @@ public class TechCenterUnitTest {
         assertNotEquals(0,category);
     }
 
-//    // Cart
-//    @Test
-//    public void  addItemToCartTest()
-//    {
-//        CartBL cartBL = new CartBL("userid: 123","productid: fd1","quantity: 2","price: 200","total: 400");
-//        boolean result = cartBL.addToCart();
-//        assertEquals(true,result);
-//    }
 }
