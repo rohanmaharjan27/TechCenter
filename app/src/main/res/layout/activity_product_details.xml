@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFF"
-    tools:context=".Activity.ProductDetailsActivity">
+    tools:context=".Activity.ProductDetailsActivity"
+    android:id="@+id/scrollViewProduct">
 
 
 
