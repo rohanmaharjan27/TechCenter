@@ -72,7 +72,7 @@ public class TechCenterUnitTest {
     @Test
     public void ratingTest()
     {
-        Rating rating = new Rating("rohandai123@gmail.com","Razer Blackwidow Chroma","5.0");
+        Rating rating = new Rating("rohandai123@gmail.com","Razer Blackwidow Elite","5.0");
         RatingBL  ratingBL = new RatingBL();
         String result = ratingBL.addRating(rating);
         assertEquals("Success",result);
@@ -85,7 +85,7 @@ public class TechCenterUnitTest {
         Rating rating = new Rating("rohandai123@gmail.com","Razer DeathAdder Elite");
         RatingBL ratingBL = new RatingBL();
         String result = ratingBL.getMyRating(rating).get(0).getRating();
-        assertEquals("4.0",result);
+        assertEquals("5.0",result);
     }
 
     // UPDATE RATING TEST
