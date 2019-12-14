@@ -33,7 +33,7 @@ import es.dmoral.toasty.Toasty;
 
 public class ProductDetailsActivity extends AppCompatActivity implements View.OnClickListener {
     ImageView pda_img;
-    TextView pda_name,pda_price,pda_category,pda_manufacturer,pda_desc,pda_rating;
+    TextView pda_name,pda_price,pda_category,pda_manufacturer,pda_desc;
     RatingBar pda_userRating;
     Button btn_wishlist,btn_cart;
     SharedPreferences preferences;
@@ -64,10 +64,9 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
             Picasso.with(getApplicationContext()).load(url).into(pda_img);
 
             pda_name.setText(bundle.getString("productName"));
-            pda_price.setText("Price: "+bundle.getString("productPrice"));
+            pda_price.setText(bundle.getString("productPrice"));
             pda_category.setText("Category: "+bundle.getString("productCategory"));
             pda_manufacturer.setText("Manufacturer: "+bundle.getString("productManufacturer"));
-            pda_rating.setText(bundle.getString("productRating"));
             pda_desc.setText(bundle.getString("productDescription"));
         }
 
@@ -85,7 +84,6 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
         pda_category=findViewById(R.id.pda_category);
         pda_manufacturer=findViewById(R.id.pda_manufacturer);
         pda_desc=findViewById(R.id.pda_desc);
-        pda_rating=findViewById(R.id.pda_productRating);
 
         pda_userRating=findViewById(R.id.pda_userRating);
 

@@ -1,17 +1,17 @@
 package com.rohan.techcenter.Model;
 
 public class UserImg {
-    private String imageFile;
+    private String userImageName;
 
-    public UserImg(String imageFile) {
-        this.imageFile = imageFile;
+    public UserImg(String userImageName) {
+        this.userImageName = userImageName;
     }
 
-    public String getImageFile() {
-        return imageFile;
+    public String getUserImageName() {
+        return userImageName;
     }
 
-    public void setImageFile(String imageFile) {
-        this.imageFile = imageFile;
+    public void setUserImageName(String userImageName) {
+        this.userImageName = userImageName;
     }
 }

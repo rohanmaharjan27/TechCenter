@@ -1,20 +1,26 @@
 package com.rohan.techcenter.Activity;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.provider.MediaStore;
@@ -53,8 +59,10 @@ import retrofit2.Response;
 public class ProfileUpdateActivity extends AppCompatActivity implements View.OnClickListener {
     CircleImageView pu_userImage;
     EditText pu_firstName,pu_lastName,pu_phone,pu_address,pu_email,pu_password;
-    Button btn_camera,btn_upload,btn_update;
+    Button btn_camera,btn_update;
 
+    private static final String TAG ="ProfileUpdateActivity";
+    private static final int REQUEST_CODE=1;
     String path="";
     String imageName;
     Bitmap image;
@@ -85,7 +93,7 @@ public class ProfileUpdateActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.activity_profile_update);
 
         actionBar=getSupportActionBar();
-        actionBar.setTitle("Product Details");
+        actionBar.setTitle("Profile Details");
         actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3d5afe")));
         actionBar.setDisplayHomeAsUpEnabled(true);
         bundle = getIntent().getExtras();
@@ -105,8 +113,6 @@ public class ProfileUpdateActivity extends AppCompatActivity implements View.OnC
         btn_camera=findViewById(R.id.pu_camera);
         btn_camera.setOnClickListener(this);
 
-        btn_upload=findViewById(R.id.pu_upload);
-        btn_upload.setOnClickListener(this);
 
         btn_update=findViewById(R.id.pu_update);
         btn_update.setOnClickListener(this);
@@ -164,6 +170,31 @@ public class ProfileUpdateActivity extends AppCompatActivity implements View.OnC
             pu_password.setError(null);
         }
         return true;
+    }
+
+    private void verifyPermissions(){
+        Log.d(TAG,"verifyPermissions: asking user for permissions");
+        String[] permissions= {Manifest.permission.READ_EXTERNAL_STORAGE,
+        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+        Manifest.permission.CAMERA};
+
+        if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
+                permissions[0]) == PackageManager.PERMISSION_GRANTED
+                && ContextCompat.checkSelfPermission(this.getApplicationContext(),
+                permissions[1]) == PackageManager.PERMISSION_GRANTED
+                && ContextCompat.checkSelfPermission(this.getApplicationContext(),
+                permissions[2]) == PackageManager.PERMISSION_GRANTED) {
+
+        }
+        else{
+            ActivityCompat.requestPermissions(ProfileUpdateActivity.this,permissions,
+                    REQUEST_CODE);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        verifyPermissions();
     }
 
     @Override
@@ -238,6 +269,13 @@ public class ProfileUpdateActivity extends AppCompatActivity implements View.OnC
         imageName= registerAndUpdateLogic.uploadImage();
     }
 
+
+    private void openGallery(){
+        Intent gallery=new Intent(Intent.ACTION_PICK);
+        gallery.setType("image/*");
+        startActivityForResult(gallery,0);
+    }
+
     private void StrictMode(){
         StrictMode.ThreadPolicy policy=new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -270,6 +308,7 @@ public class ProfileUpdateActivity extends AppCompatActivity implements View.OnC
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.pu_camera:
+                verifyPermissions();
                 new MaterialDialog.Builder(ProfileUpdateActivity.this)
                         .title("Choose an action")
                         .items(R.array.itemId)
@@ -277,7 +316,6 @@ public class ProfileUpdateActivity extends AppCompatActivity implements View.OnC
                         .itemsCallback(new MaterialDialog.ListCallback() {
                             @Override
                             public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
-
                                 switch (position) {
                                     case 0:
                                         Intent imagePicker = new Intent(Intent.ACTION_PICK);
@@ -300,8 +338,8 @@ public class ProfileUpdateActivity extends AppCompatActivity implements View.OnC
                 break;
 
             case R.id.pu_update:
-                if (validate()) {
                     SaveImage();
+                if (validate()) {
                     updateUser();
                 }
                 finish();

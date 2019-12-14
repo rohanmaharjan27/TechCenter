@@ -41,7 +41,7 @@ public class UpdateBL {
         Call<UserImg> itemCall = tcAPI.uploadImage(image);
         try {
             Response<UserImg> imgResponse = itemCall.execute();
-            imageName = imgResponse.body().getImageFile();
+            imageName = imgResponse.body().getUserImageName();
         } catch (IOException e) {
             Log.e("Error is:", e.getMessage());
 

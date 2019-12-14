@@ -13,7 +13,7 @@
         android:id="@+id/action_wishlist"
         android:enabled="true"
         android:icon="@drawable/ic_favourite_white"
-        android:title="Gaming"
+        android:title="Wishlist"
         app:showAsAction="ifRoom"/>
 
     <item
