@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.rohan.techcenter.BL.ProductBL;
 import com.rohan.techcenter.BL.WishlistBL;
 import com.rohan.techcenter.Fragment.WishlistFragment;
 import com.rohan.techcenter.Model.Wishlist;
@@ -46,13 +47,14 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.Wishli
 
     @Override
     public void onBindViewHolder(@NonNull WishlistAdapter.WishlistViewHolder holder, int position) {
+        ProductBL productBL = new ProductBL();
         final Wishlist wishlist=wishList.get(position);
 
         final String id=wishlist.get_id();
         holder.tv_name.setText(wishlist.getProduct_name());
         holder.tv_price.setText(wishlist.getProduct_price());
         holder.tv_category.setText(wishlist.getProduct_category());
-        holder.tv_rating.setText(wishlist.getProduct_rating());
+        holder.tv_rating.setText(productBL.getTotalRating(wishlist.getProduct_name()));
         holder.tv_date.setText(wishlist.getDate_added());
 
         String url= URL.BASE_URL+"images/"+wishlist.getProduct_imagename();
