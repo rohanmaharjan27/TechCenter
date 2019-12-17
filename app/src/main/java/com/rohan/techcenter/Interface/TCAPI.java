@@ -41,7 +41,7 @@ public interface TCAPI {
     Call<User> getProfile(@Header("Authorization") String token);
 
     @Multipart
-    @POST("users/userImageUpload")
+    @POST("users/imageuploaduser")
     Call<UserImg> uploadImage (@Part MultipartBody.Part body);
 
     @PUT("users/updateUser/{email}")

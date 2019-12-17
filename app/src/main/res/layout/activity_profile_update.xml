@@ -32,6 +32,17 @@
         android:id="@+id/pu_camera"
         />
 
+    <Button
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginLeft="@dimen/_35sdp"
+        android:background="@drawable/ic_file_upload"
+        android:layout_toRightOf="@+id/pu_userImage"
+        android:layout_below="@id/pu_camera"
+        android:id="@+id/pu_upload"
+        />
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="@dimen/_30sdp"

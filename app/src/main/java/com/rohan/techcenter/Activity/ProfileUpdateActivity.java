@@ -59,14 +59,15 @@ import retrofit2.Response;
 public class ProfileUpdateActivity extends AppCompatActivity implements View.OnClickListener {
     CircleImageView pu_userImage;
     EditText pu_firstName,pu_lastName,pu_phone,pu_address,pu_email,pu_password;
-    Button btn_camera,btn_update;
+    Button btn_camera,btn_upload,btn_update;
 
     private static final String TAG ="ProfileUpdateActivity";
     private static final int REQUEST_CODE=1;
-    String path="";
-    String imageName;
-    Bitmap image;
 
+    String userImageName;
+
+    Bitmap bitmap;
+    Uri imageUri;
     private static final int PICK_IMAGE=1;
     private static final int CAMERA_REQUEST=2;
 
@@ -112,6 +113,9 @@ public class ProfileUpdateActivity extends AppCompatActivity implements View.OnC
 
         btn_camera=findViewById(R.id.pu_camera);
         btn_camera.setOnClickListener(this);
+
+        btn_upload=findViewById(R.id.pu_upload);
+        btn_upload.setOnClickListener(this);
 
 
         btn_update=findViewById(R.id.pu_update);
@@ -200,80 +204,51 @@ public class ProfileUpdateActivity extends AppCompatActivity implements View.OnC
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1) {
-            if (resultCode == RESULT_OK) {
-                try {
-                    final Uri imageUri = data.getData();
-                    path = getImageFilePath(imageUri);
-                    Log.e("Path :", path);
-                    Bitmap selectedImage = BitmapFactory.decodeFile(path);
-                    pu_userImage.setImageBitmap(selectedImage);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+
+        if (requestCode == PICK_IMAGE && resultCode == RESULT_OK) {
+            if (data == null) {
+                Toasty.warning(getApplicationContext(), "Please select an Image", Toasty.LENGTH_LONG).show();
             }
-        } else if (requestCode == 2) {
-            if (resultCode == RESULT_OK) {
-                onCaptureImage(data);
+            imageUri = data.getData();
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
+                pu_userImage.setImageBitmap(bitmap);
+                Toasty.info(ProfileUpdateActivity.this, "Please click the upload button and save changes!", Toasty.LENGTH_LONG).show();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
-    }
 
-    private void onCaptureImage(Intent data) {
-        image = (Bitmap) data.getExtras().get("data");
-        pu_userImage.setImageBitmap(image);
-        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        image.compress(Bitmap.CompressFormat.JPEG,100, bytes);
-        String capturedPath = MediaStore.Images.Media.insertImage(getContentResolver(), image, "Title", null);
-        Uri uri = Uri.parse(capturedPath);
-
-        path=getImageFilePath(uri);
-        Log.e("Path of captured image","---"+path);
-    }
-
-
-    private String getImageFilePath(Uri uri) {
-        String path = null;
-        String image_id = null;
-
-        Cursor cursor = getContentResolver().query(uri, null, null, null, null);
-        if (cursor != null) {
-            cursor.moveToFirst();
-            image_id = cursor.getString(0);
-            image_id = image_id.substring(image_id.lastIndexOf(":") + 1);
-            cursor.close();
+        if (requestCode==CAMERA_REQUEST && resultCode==RESULT_OK){
+            Bundle extras=data.getExtras();
+            bitmap=(Bitmap)extras.get("data");
+            pu_userImage.setImageBitmap(bitmap);
+            Toasty.info(ProfileUpdateActivity.this, "Please click the upload button and save changes!", Toasty.LENGTH_LONG).show();
         }
-
-        Cursor mCursor = getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, null,
-                MediaStore.Images.Media._ID + " = ? ", new String[]{image_id}, null);
-
-        if (mCursor != null) {
-            mCursor.moveToFirst();
-            path = mCursor.getString(mCursor.getColumnIndex(MediaStore.Images.Media.DATA));
-            mCursor.close();
-        }
-        return path;
-    }
-
-    private void SaveImage() {
-        if (path.isEmpty()) {
-            imageName="defaultImage.png";
-            return;
-        }
-        File file = new File(path);
-        Log.e("Alright", path);
-        RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
-        MultipartBody.Part img = MultipartBody.Part.createFormData("profileImage", file.getName(), requestBody);
-        UpdateBL registerAndUpdateLogic = new UpdateBL(img);
-        StrictMode();
-        imageName= registerAndUpdateLogic.uploadImage();
     }
 
 
-    private void openGallery(){
-        Intent gallery=new Intent(Intent.ACTION_PICK);
-        gallery.setType("image/*");
-        startActivityForResult(gallery,0);
+    private void addImage(){
+        ByteArrayOutputStream stream=new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG,100,stream);
+        byte[] bytes=stream.toByteArray();
+        try {
+            File file=new File(this.getCacheDir(),"image.jpeg");
+            file.createNewFile();
+            FileOutputStream fos=new FileOutputStream(file);
+            fos.write(bytes);
+            fos.flush();
+            fos.close();
+
+            RequestBody rb=RequestBody.create(MediaType.parse("multipart/form-data"),file);
+            MultipartBody.Part body=MultipartBody.Part.createFormData("imageFile",file.getName(),rb);
+            UpdateBL updateBL = new UpdateBL(body);
+            StrictMode();
+            userImageName= updateBL.uploadImage();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void StrictMode(){
@@ -291,7 +266,7 @@ public class ProfileUpdateActivity extends AppCompatActivity implements View.OnC
 
         String user_type="user";
 
-        final User user=new User(fname,lname,phone,address,email,password,imageName,user_type);
+        final User user=new User(fname,lname,phone,address,email,password,userImageName,user_type);
 
         UpdateBL updateLogic = new UpdateBL(email,user);
         StrictMode();
@@ -302,7 +277,7 @@ public class ProfileUpdateActivity extends AppCompatActivity implements View.OnC
         }else {
             Toasty.error(this,"Failed to update",Toasty.LENGTH_SHORT).show();
         }
-        }
+    }
 
     @Override
     public void onClick(View view) {
@@ -337,8 +312,17 @@ public class ProfileUpdateActivity extends AppCompatActivity implements View.OnC
                         }).show();
                 break;
 
+            case (R.id.pu_upload):
+                if (bitmap!=null) {
+                    addImage();
+                    Toasty.info(ProfileUpdateActivity.this, "Click on Save Changes", Toasty.LENGTH_LONG).show();
+                }
+                else {
+                    Toasty.warning(ProfileUpdateActivity.this, "Please select a new image!", Toasty.LENGTH_LONG).show();
+                }
+                break;
+
             case R.id.pu_update:
-                    SaveImage();
                 if (validate()) {
                     updateUser();
                 }
