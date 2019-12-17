@@ -151,7 +151,6 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
 
         if (wishlistBL.addToWishlist()){
             Toasty.success(ProductDetailsActivity.this,"Added to Wishlist!", Toast.LENGTH_SHORT).show();
-            finish();
         }
         else{
             Toasty.warning(ProductDetailsActivity.this,"Product already in Wishlist!",Toast.LENGTH_SHORT).show();
@@ -171,7 +170,6 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
 
         if (cartBL.addToCart()){
             Toasty.success(ProductDetailsActivity.this,"Added to Cart!", Toast.LENGTH_SHORT).show();
-            finish();
         }
         else{
             Toasty.warning(ProductDetailsActivity.this,"Item already in Cart!",Toast.LENGTH_SHORT).show();

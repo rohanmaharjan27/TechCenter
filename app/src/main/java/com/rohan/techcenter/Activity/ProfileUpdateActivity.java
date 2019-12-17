@@ -326,7 +326,6 @@ public class ProfileUpdateActivity extends AppCompatActivity implements View.OnC
                 if (validate()) {
                     updateUser();
                 }
-                finish();
                 break;
         }
     }
