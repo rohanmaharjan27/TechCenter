@@ -7,12 +7,12 @@
     android:orientation="vertical"
     tools:context=".Activity.SplashScreen"
     android:gravity="center"
-    android:background="#3d5afe">
+    android:background="#333333">
 
     <ImageView
         android:layout_width="@dimen/_150sdp"
         android:layout_height="@dimen/_150sdp"
         android:scaleType="centerInside"
-        android:src="@drawable/ic_launcher_foreground"/>
+        android:src="@drawable/logo"/>
 
 </LinearLayout>
